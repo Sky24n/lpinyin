@@ -21,15 +21,9 @@ class PinyinHelper {
   static final String allUnmarkedVowel = "aeiouv";
 
   static String getFirstWordPinyin(String str) {
-    String pinyin = '#';
-    try {
-      String _pinyin = convertToPinyinString(
-          str, pinyinSeparator, PinyinFormat.WITHOUT_TONE);
-      pinyin = _pinyin.split(pinyinSeparator)[0];
-    } catch (ex) {
-      print(ex.toString());
-    }
-    return pinyin;
+    String _pinyin = convertToPinyinStringWithoutException(
+        str, pinyinSeparator, PinyinFormat.WITHOUT_TONE);
+    return _pinyin.split(pinyinSeparator)[0];
   }
 
   /**
