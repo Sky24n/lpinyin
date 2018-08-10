@@ -5,4 +5,3 @@ export 'src/pinyin_helper.dart';
 export 'src/pinyin_exception.dart';
 export 'src/pinyin_resource.dart';
 export 'src/chinese_helper.dart';
-export 'src/llog_util.dart';

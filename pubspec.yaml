@@ -1,8 +1,11 @@
 name: lpinyin
 description: A new Flutter Pinyin plugin.
 version: 0.0.1
-author: thl
-homepage: https://github.com/Sky24n
+author: thl <sky24no@gmail.com>
+homepage: https://github.com/Sky24n/lpinyin
+
+environment:
+    sdk: ">=1.19.0 <2.0.0"
 
 dependencies:
   flutter:

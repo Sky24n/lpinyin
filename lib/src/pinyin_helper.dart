@@ -1,7 +1,6 @@
 import 'dart:collection';
 
 import 'package:lpinyin/src/chinese_helper.dart';
-import 'package:lpinyin/src/llog_util.dart';
 import 'package:lpinyin/src/pinyin_exception.dart';
 import 'package:lpinyin/src/pinyin_format.dart';
 import 'package:lpinyin/src/pinyin_resource.dart';
@@ -72,7 +71,6 @@ class PinyinHelper {
       if (node == null) {
         String _char = str[i];
         if (ChineseHelper.isChinese(_char)) {
-          //LLogUtil.e("substr: " + _char);
           List<String> pinyinArray = convertToPinyinArray(_char, format);
           if (pinyinArray.length > 0) {
             sb.write(pinyinArray[0]);
@@ -117,7 +115,6 @@ class PinyinHelper {
       if (node == null) {
         String _char = str[i];
         if (ChineseHelper.isChinese(_char)) {
-          //LLogUtil.e("substr: " + _char);
           List<String> pinyinArray = convertToPinyinArray(_char, format);
           if (pinyinArray.length > 0) {
             sb.write(pinyinArray[0]);
