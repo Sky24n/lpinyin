@@ -20,23 +20,31 @@ class PinyinHelper {
   static final String allMarkedVowel = "āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ";
   static final String allUnmarkedVowel = "aeiouv";
 
+  /**
+   *获取字符串首字拼音
+   *@param str 需要转换的字符串
+   *  @return 首字拼音
+   */
+
+  ///
   static String getFirstWordPinyin(String str) {
-    String _pinyin = convertToPinyinStringWithoutException(
-        str, pinyinSeparator, PinyinFormat.WITHOUT_TONE);
+    String _pinyin =
+        convertToPinyinStringWithoutException(str, separator: pinyinSeparator);
     return _pinyin.split(pinyinSeparator)[0];
   }
 
   /**
    * 获取字符串对应拼音的首字母
    * @param str 需要转换的字符串
+   * @param defPinyin 拼音分隔符 def: '#'
    * @return 对应拼音的首字母
    */
 
   ///
-  static String getShortPinyin(String str) {
+  static String getShortPinyin(String str, {String defPinyin: '#'}) {
     StringBuffer sb = new StringBuffer();
-    String pinyin =
-        convertToPinyinString(str, pinyinSeparator, PinyinFormat.WITHOUT_TONE);
+    String pinyin = convertToPinyinStringWithoutException(str,
+        separator: pinyinSeparator, defPinyin: defPinyin);
     List<String> list = pinyin.split(pinyinSeparator);
     list.forEach((value) {
       sb.write(value[0]);
@@ -46,15 +54,15 @@ class PinyinHelper {
 
   /**
    * 将字符串转换成相应格式的拼音
-   * @param c 需要转换的字符串
-   * @param format 拼音分隔符
-   * @param format 拼音格式
+   * @param str 需要转换的字符串
+   * @param separator 拼音分隔符 def: " "
+   * @param format 拼音格式 def: PinyinFormat.WITHOUT_TONE
    * @return 字符串的拼音
    */
 
   ///
-  static String convertToPinyinString(
-      String str, String separator, PinyinFormat format) {
+  static String convertToPinyinString(String str,
+      {String separator: " ", PinyinFormat format: PinyinFormat.WITHOUT_TONE}) {
     StringBuffer sb = new StringBuffer();
     str = ChineseHelper.convertToSimplifiedChinese(str);
     int strLen = str.length;
@@ -89,16 +97,19 @@ class PinyinHelper {
   }
 
   /**
-   * 将字符串转换成相应格式的拼音 (不能转换的字拼音用'#'替代 )
-   * @param c 需要转换的字符串
-   * @param format 拼音分隔符
-   * @param format 拼音格式
+   * 将字符串转换成相应格式的拼音 (不能转换的字拼音默认用'#'替代 )
+   * @param str 需要转换的字符串
+   * @param separator 拼音分隔符 def: " "
+   * @param defPinyin 拼音分隔符 def: '#'
+   * @param format 拼音格式 def: PinyinFormat.WITHOUT_TONE
    * @return 字符串的拼音
    */
 
   ///
-  static String convertToPinyinStringWithoutException(
-      String str, String separator, PinyinFormat format) {
+  static String convertToPinyinStringWithoutException(String str,
+      {String separator: " ",
+      String defPinyin: '#',
+      PinyinFormat format: PinyinFormat.WITHOUT_TONE}) {
     StringBuffer sb = new StringBuffer();
     str = ChineseHelper.convertToSimplifiedChinese(str);
     int strLen = str.length;
@@ -113,8 +124,11 @@ class PinyinHelper {
           if (pinyinArray.length > 0) {
             sb.write(pinyinArray[0]);
           } else {
-            sb.write('#');
-            print("### Can't convert to pinyin: " + _char);
+            sb.write(defPinyin);
+            print("### Can't convert to pinyin: " +
+                _char +
+                "   defPinyin: " +
+                defPinyin);
           }
         } else {
           sb.write(_char);
@@ -135,8 +149,8 @@ class PinyinHelper {
 
   /**
    * 获取多音字拼音
-   * @param c 需要转换的字符串
-   * @param format 拼音分隔符
+   * @param str 需要转换的字符串
+   * @param separator 拼音分隔符
    * @param format 拼音格式
    * @return 多音字拼音
    */
