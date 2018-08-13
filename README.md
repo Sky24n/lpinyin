@@ -1,6 +1,6 @@
 # lpinyin (汉字转拼音Flutter版)
 
-lpinyin是一个汉字转拼音的flutter package. 主要参考Java开源类库jpinyin.<br>
+lpinyin是一个汉字转拼音的flutter package. 主要参考Java开源类库[jpinyin](https://github.com/SilenceDut/jpinyin).<br>
 ①准确、完善的字库<br>
 ②拼音转换速度快<br>
 ③支持多种拼音输出格式：带音标、不带音标、数字表示音标以及拼音首字母输出格式<br>
