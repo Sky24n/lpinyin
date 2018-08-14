@@ -23,7 +23,7 @@ lpinyin是一个汉字转拼音的flutter package. 主要参考Java开源类库[
 
 ```yaml
 dependencies:
-  lpinyin: 1.0.0
+  lpinyin: 0.0.1
 ```
 
 ### Example
