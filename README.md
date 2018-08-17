@@ -13,9 +13,7 @@ lpinyin是一个汉字转拼音的flutter package. 主要参考Java开源类库[
 - <img src='./screenshot/qrcode.png'>
 
 ##  Demo截图
-<div>
 ![image](https://github.com/Sky24n/lpinyin/blob/master/screenshot/2018-08-17_13_13_09.gif)
-</div>
 <div>
 <img src="https://github.com/Sky24n/lpinyin/blob/master/screenshot/1.png" width="200">
 <img src="https://github.com/Sky24n/lpinyin/blob/master/screenshot/2.png" width="200">
