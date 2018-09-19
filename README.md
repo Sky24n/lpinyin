@@ -1,33 +1,27 @@
 # lpinyin (汉字转拼音Flutter版)
 
-lpinyin是一个汉字转拼音的flutter package. 主要参考Java开源类库[jpinyin](https://github.com/SilenceDut/jpinyin).<br>
-①准确、完善的字库<br>
-②拼音转换速度快<br>
-③支持多种拼音输出格式：带音标、不带音标、数字表示音标以及拼音首字母输出格式<br>
-④支持常见多音字的识别，其中包括词组、成语、地名等<br>
-⑤简繁体中文转换<br>
+[![Pub](https://img.shields.io/pub/v/lpinyin.svg?style=flat-square)](https://pub.dartlang.org/packages/lpinyin)
+
+lpinyin是一个汉字转拼音的flutter package. 主要参考Java开源类库[jpinyin](https://github.com/SilenceDut/jpinyin).  
+①准确、完善的字库  
+②拼音转换速度快  
+③支持多种拼音输出格式：带音标、不带音标、数字表示音标以及拼音首字母输出格式  
+④支持常见多音字的识别，其中包括词组、成语、地名等  
+⑤简繁体中文转换  
 ⑥支持添加用户自定义字典
 
-# Android扫码下载APK
+## Android扫码下载APK
 - 请使用手机浏览器扫码下载，不要使用微信或者qq扫码
-- <img src='./screenshot/qrcode.png'>
+- ![](https://github.com/Sky24n/lpinyin/blob/master/screenshot/qrcode.png)
 
 ##  Demo截图
 ![image](https://github.com/Sky24n/lpinyin/blob/master/screenshot/2018-08-17_13_13_09.gif)
-<div>
-<img src="https://github.com/flutterchina/lpinyin/blob/master/screenshot/1.png" width="200">
-<img src="https://github.com/Sky24n/lpinyin/blob/master/screenshot/2.png" width="200">
-</div>
-<div>
-<img src="https://github.com/Sky24n/lpinyin/blob/master/screenshot/3.png" width="200">
-<img src="https://github.com/Sky24n/lpinyin/blob/master/screenshot/4.png" width="200">
-</div>
 
 ### Add dependency
 
 ```yaml
 dependencies:
-  lpinyin: 0.0.2
+  lpinyin: x.x.x  #latest version
 ```
 
 ### Example
@@ -55,10 +49,10 @@ PinyinHelper.convertToPinyinStringWithoutException(text, separator: " ", defPiny
 
 //添加用户自定义字典
 List<String> dict1 = ['耀=yào','老=lǎo'];
-PinyinHelper.addPinyinDict(dict1);
+PinyinHelper.addPinyinDict(dict1);//拼音字典
 List<String> dict2 = ['奇偶=jī,ǒu','成都=chéng,dū'];
-PinyinHelper.addMultiPinyinDict(dict2);
+PinyinHelper.addMultiPinyinDict(dict2);//多音字词组字典
 List<String> dict3 = ['倆=俩','們=们'];
-ChineseHelper.addChineseDict(dict3);
+ChineseHelper.addChineseDict(dict3);//繁体字字典
 
 ```

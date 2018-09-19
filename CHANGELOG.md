@@ -1,3 +1,19 @@
+## 1.0.2
+
+* TODO: Delete useless files.
+
+## 1.0.1
+
+* TODO: Optimize Pinyin conversion speed.
+
+## 1.0.0
+
+* TODO: fix "" separator bug.
+
+## 0.0.2
+
+* TODO: fix sdk environment.
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* TODO: lPinyin initial release.

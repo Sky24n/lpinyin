@@ -19,6 +19,8 @@ class PinyinHelper {
   // 所有带声调的拼音字母
   static final String allMarkedVowel = "āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ";
   static final String allUnmarkedVowel = "aeiouv";
+  static int minMultiLength = 2;
+  static int maxMultiLength = 0;
 
   /**
    *获取字符串首字拼音
@@ -91,7 +93,7 @@ class PinyinHelper {
         i += node.word.length;
       }
     }
-    return (sb.toString().endsWith(separator)
+    return ((sb.toString().endsWith(separator) && separator != "")
         ? sb.toString().substring(0, sb.toString().length - 1)
         : sb.toString());
   }
@@ -142,7 +144,7 @@ class PinyinHelper {
         i += node.word.length;
       }
     }
-    return (sb.toString().endsWith(separator)
+    return ((sb.toString().endsWith(separator) && separator != "")
         ? sb.toString().substring(0, sb.toString().length - 1)
         : sb.toString());
   }
@@ -158,8 +160,18 @@ class PinyinHelper {
   ///
   static MultiPinyin convertToMultiPinyin(
       String str, String separator, PinyinFormat format) {
-    int length = str.length;
-    for (int end = length; end > 1; end--) {
+    if (str.length < minMultiLength) return null;
+    if (maxMultiLength == 0) {
+      List<String> keys = multiPinyinMap.keys.toList();
+      for (int i = 0, length = keys.length; i < length; i++) {
+        if (keys[i].length > maxMultiLength) {
+          maxMultiLength = keys[i].length;
+        }
+      }
+    }
+    for (int end = minMultiLength, length = str.length;
+        (end <= length && end <= maxMultiLength);
+        end++) {
       String subStr = str.substring(0, end);
       String multi = multiPinyinMap[subStr];
       if (multi != null && multi.length > 0) {
@@ -302,10 +314,12 @@ class PinyinHelper {
     return false;
   }
 
+  ///添加拼音字典
   static void addPinyinDict(List<String> list) {
     pinyinMap.addAll(PinyinResource.getResource(list));
   }
 
+  ///添加多音字字典
   static void addMultiPinyinDict(List<String> list) {
     multiPinyinMap.addAll(PinyinResource.getResource(list));
   }

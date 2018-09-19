@@ -16,19 +16,14 @@ class PinyinResource {
   }
 
   static Map<String, String> getResource(List<String> list) {
-    Map<String, String> map = new HashMap.fromIterable(list,
-        key: (item) => item.trim().split("=")[0],
-        value: (item) => item.trim().split("=")[1]);
+    Map<String, String> map = new HashMap();
+    List<MapEntry<String, String>> mapEntryList = new List();
+    for (int i = 0, length = list.length; i < length; i++) {
+      List<String> tokens = list[i].trim().split("=");
+      MapEntry<String, String> mapEntry = new MapEntry(tokens[0], tokens[1]);
+      mapEntryList.add(mapEntry);
+    }
+    map.addEntries(mapEntryList);
     return map;
-
-//    Map<String, String> _map = new HashMap();
-//    List<MapEntry<String, String>> mapEntryList = new List();
-//    list.forEach((value) {
-//      List<String> tokens = value.trim().split("=");
-//      MapEntry<String, String> mapEntry = new MapEntry(tokens[0], tokens[1]);
-//      mapEntryList.add(mapEntry);
-//    });
-//    _map.addEntries(mapEntryList);
-//    return _map;
   }
 }
